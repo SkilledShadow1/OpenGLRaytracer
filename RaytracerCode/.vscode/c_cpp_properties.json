@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "../include/",
+                "${workspaceFolder}/sgraph/",
+                "${workspaceFolder}/"
+            ],
+            "defines": [],
+            "compilerPath": "/opt/homebrew/opt/llvm/bin/clang",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "macos-clang-arm64"
+        }
+    ],
+    "version": 4
+}

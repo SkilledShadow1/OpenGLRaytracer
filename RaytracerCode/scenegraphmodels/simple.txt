@@ -1,0 +1,163 @@
+#all the instances
+instance box models/box-outside.obj
+instance sphere models/sphere.obj
+
+material box-material
+emission 0 0 0
+ambient 0.1 0.1 0.1
+diffuse 0.2 0.2 0.2
+specular 0.5 0.5 0.5
+shininess 50
+absorption 0.1
+transparency 0
+reflection 0.8
+end-material
+
+material sphere-material
+emission 0 0 0
+ambient 0.6 0.3 0
+diffuse 0.8 0 0.3
+specular 1 1 1
+shininess 100
+absorption 0.7
+transparency 0
+reflection 0.3
+end-material
+
+#lights
+light one-light
+ambient 0.1 0.1 0.6
+diffuse 0.5 0.5 0.5
+specular 0.5 0.5 0.5
+position 0 50 0 
+end-light
+
+#lights
+light two-light
+ambient 1 1 1
+diffuse 1 1 1
+specular 0.5 0.5 0.5
+position 0 40 0
+spot-direction 0 -1 0
+spot-angle 25
+end-light
+
+#lights
+light three-light
+ambient 0.7 0.7 0.7
+diffuse 1 1 1
+specular 0.5 0.5 0.5
+position 0 -20 0
+spot-direction 0 1 0
+spot-angle 30
+end-light
+
+#textures
+image white textures/white.ppm
+image checkerboard textures/checkerboard.ppm
+
+group r r
+group root root
+assign-light one-light root
+assign-light two-light root
+assign-light three-light root
+
+rotate r-root r-root 90 0 -1 0
+translate t-root t-root 0 13 4
+
+add-child t-root r
+add-child r-root t-root
+add-child root r-root
+
+
+#box
+translate b-translate b-translate 0 2 0
+scale b-scale b-scale 10 10 10
+leaf one-box one-box instanceof box 
+assign-material one-box sphere-material
+assign-texture one-box white
+
+add-child one-box b-scale
+add-child b-scale b-translate
+add-child b-translate root
+
+#ground
+translate b2-translate b2-translate 0 -22 0
+scale b2-scale b2-scale 80 5 80
+leaf two-box two-box instanceof box 
+assign-material two-box box-material
+assign-texture two-box white
+
+add-child two-box b2-scale
+add-child b2-scale b2-translate
+add-child b2-translate root
+
+#ceiling
+translate b3-translate b3-translate 0 18 0
+scale b3-scale b3-scale 80 5 80
+leaf three-box three-box instanceof box 
+assign-material three-box box-material
+assign-texture three-box white
+
+add-child three-box b3-scale
+add-child b3-scale b3-translate
+add-child b3-translate root
+
+#wall 1
+translate w1-translate w1-translate 0 -20 30
+scale w1-scale w1-scale 80 80 10
+leaf w1-wall w1-wall instanceof box 
+assign-material w1-wall box-material
+assign-texture w1-wall white
+
+add-child w1-wall w1-scale
+add-child w1-scale w1-translate
+add-child w1-translate root
+
+#wall 2
+translate w2-translate w2-translate -30 -20 0
+scale w2-scale w2-scale 10 80 70
+leaf w2-wall w2-wall instanceof box 
+assign-material w2-wall box-material
+assign-texture w2-wall white
+
+add-child w2-wall w2-scale
+add-child w2-scale w2-translate
+add-child w2-translate root
+
+#wall 3
+translate w3-translate w3-translate 45 -20 0
+scale w3-scale w3-scale 10 80 50
+leaf w3-wall w3-wall instanceof box 
+assign-material w3-wall box-material
+assign-texture w3-wall white
+
+add-child w3-wall w3-scale
+add-child w3-scale w3-translate
+add-child w3-translate root
+
+#wall 4
+translate w4-translate w4-translate 0 -20 -30
+scale w4-scale w4-scale 80 80 10
+leaf w4-wall w4-wall instanceof box 
+assign-material w4-wall box-material
+assign-texture w4-wall white
+
+add-child w4-wall w4-scale
+add-child w4-scale w4-translate
+add-child w4-translate root
+
+#sphere
+translate s-translate s-translate -10 -15 15
+scale s-scale s-scale 5 5 5
+leaf one-sphere one-sphere instanceof sphere 
+assign-material one-sphere sphere-material
+assign-texture one-sphere white
+
+add-child one-sphere s-scale
+add-child s-scale s-translate
+add-child s-translate root
+
+
+assign-root r
+
